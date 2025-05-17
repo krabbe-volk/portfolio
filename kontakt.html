@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontaktieren Sie Henrike Krabbenhöft - KI-Expertin und Entwicklerin">
+    <title>Kontakt | Henrike Krabbenhöft</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header mit Navigation -->
+    <header class="site-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="img/logo.png" alt="Die Krabben" class="logo-image">
+                </a>
+                
+                <button class="hamburger" aria-label="Menü öffnen">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="über-mich.html">Über mich</a></li>
+                    <li><a href="kompetenzen-tools.html">Kompetenzen & Tools</a></li>
+                    <li><a href="ki-in-aktion.html">KI in Aktion</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li class="nav-divider"></li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main>
+        <div class="container" style="margin-bottom: var(--spacing-lg); text-align: center;">
+            <h1 class="about-headline">Lust, etwas gemeinsam zu bewegen?<br>Dann lassen Sie uns sprechen.</h1>
+            <p>Ich freue mich auf den Austausch, ob Projekt, feste Position oder zum Kennenlernen.<br> Wenn Sie ein Arbeitsumfeld bieten, in dem Zusammenarbeit zählt und<br> neue Perspektiven willkommen sind, passen wir gut zusammen.</p>
+        </div>
+
+        <!-- What I'm Looking For Section -->
+        <section class="looking-for-section" style="background-color: #fdf6f4; padding: var(--spacing-xl) 0; margin-bottom: var(--spacing-xl);">
+            <div class="container">
+                <h2>Was ich suche</h2>
+                <p>Ein Arbeitsumfeld, in dem ich meine Stärken entfalten und gemeinsam mit einem engagierten Team etwas bewegen kann.</p>
+                <div class="looking-for-buttons" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2rem;">
+                    <button class="looking-for-btn" data-desc="Ich möchte 3–4 Jahre aktiv mitgestalten. Langfristig, motiviert und auf Augenhöhe.">Perspektive</button>
+                    <button class="looking-for-btn" data-desc="Marketing und KI sinnvoll kombinieren. Weiter lernen. Neues ausprobieren.">Innovation</button>
+                    <button class="looking-for-btn" data-desc="Ein Produkt oder Thema, hinter dem ich stehen kann. Echt und glaubwürdig.">Identifikation</button>
+                    <button class="looking-for-btn" data-desc="Ein gutes Miteinander. Offen, unkompliziert, gemeinsam denkend.">Teamspirit</button>
+                </div>
+                <div id="looking-for-desc" class="looking-for-desc" style="background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(160,189,169,0.10); padding: 2rem; max-width: 600px; margin: 0 auto; text-align: center; font-size: 1rem;">
+                    Fahre mit der Maus über einen Begriff, um mehr zu erfahren.
+                </div>
+            </div>
+        </section>
+        <script>
+        // Interaktivität für die kompakte "Was ich suche"-Section
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.looking-for-btn');
+            const desc = document.getElementById('looking-for-desc');
+            const defaultText = 'Fahre mit der Maus über einen Begriff, um mehr zu erfahren.';
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    desc.textContent = btn.getAttribute('data-desc');
+                });
+                btn.addEventListener('mouseleave', () => {
+                    desc.textContent = defaultText;
+                });
+                btn.addEventListener('focus', () => {
+                    desc.textContent = btn.getAttribute('data-desc');
+                });
+                btn.addEventListener('blur', () => {
+                    desc.textContent = defaultText;
+                });
+            });
+        });
+        </script>
+
+        <!-- Contact Content -->
+        <section class="contact-content slide-in" style="background-color: #1F2235;">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Contact Form -->
+                    <article class="contact-form-container">
+                        <h2>Kontaktformular</h2>
+                        <form id="contact-form" class="contact-form" action="#" method="POST">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">E-Mail</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Betreff</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Nachricht</label>
+                                <textarea id="message" name="message" rows="6" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="privacy" required>
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">Ich&nbsp;habe&nbsp;die <a href="datenschutz.html"><span class="datenschutz-highlight">Datenschutzerklärung</span></a> gelesen und stimme der Verarbeitung meiner Daten zu.</span>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="cta-button">Nachricht senden</button>
+                        </form>
+                    </article>
+
+                    <!-- Contact Info -->
+                    <aside class="contact-info" style="background-color: #1F2235;">
+                        <div class="info-card">
+                            <div class="info-icon" aria-hidden="true" style="text-align:center; margin-bottom: 0.5rem;">
+                                <!-- Mail/Person Icon -->
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="#1F2235" stroke-width="2"/>
+                                    <path d="M8 10a4 4 0 1 1 8 0c0 2.21-1.79 4-4 4s-4-1.79-4-4z" stroke="#FF5E5B" stroke-width="2"/>
+                                    <path d="M4 20c0-2.21 3.58-4 8-4s8 1.79 8 4" stroke="#A0BDA9" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3 style="text-align:center; margin-bottom: 1rem;">Kontaktinformationen</h3>
+                            <ul class="contact-list" style="text-align:left;">
+                                <li>
+                                    <strong>E-Mail:</strong>
+                                    <a href="mailto:kontakt@henrikekrabbe.de">henrike.krabbenhoeft(at)die-krabben.de</a>
+                                </li><li>
+                                    <strong>Mobil:</strong>
+                                    0151 58017478
+                                </li>
+                                <li>
+                                    <strong>LinkedIn:</strong>
+                                    <a href="https://www.linkedin.com/in/henrikekrabbenhoeft/" target="_blank" rel="noopener noreferrer">Henrike Krabbenhöft</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon" aria-hidden="true" style="text-align:center; margin-bottom: 0.5rem;">
+                                <!-- Kalender/Uhr Icon -->
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="4" width="18" height="16" rx="2" stroke="#1F2235" stroke-width="2"/>
+                                    <path d="M16 2v4M8 2v4M3 10h18" stroke="#FF5E5B" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3 style="text-align:center; margin-bottom: 1rem;">Verfügbarkeit</h3>
+                            <p style="text-align:left;">Ich freue mich auf passende Angebote. Eine Wochenarbeitszeit zwischen 20 und 35 Stunden ist gut realisierbar.</p>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon" aria-hidden="true" style="text-align:center; margin-bottom: 0.5rem;">
+                                <!-- Standort/Map Icon -->
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 21s-6-5.686-6-10A6 6 0 0 1 18 11c0 4.314-6 10-6 10z" stroke="#1F2235" stroke-width="2"/>
+                                    <circle cx="12" cy="11" r="2.5" stroke="#FF5E5B" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3 style="text-align:center; margin-bottom: 1rem;">Standort</h3>
+                            <p style="text-align:left;">Ideal ist ein Arbeitsumfeld im Raum Ammersee. Und von Landsberg am Lech bis in den südwestlichen Bereich Münchens.</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="container" style="margin: 40px auto;">
+        <img src="img/wave.jpg" alt="Lampe" style="width: 100%; display: block; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+    </div>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/henrikekrabbenhoeft/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                        <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                    </a>
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                    <a href="krabben.html">Die Krabben persönlich</a>
+                </div>
+                <p class="copyright">&copy; <span id="current-year"></span> Henrike Krabbenhöft. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // Set active navigation link based on current page (auch für Umlaute und Groß-/Kleinschreibung)
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = decodeURIComponent(window.location.pathname.split('/').pop().toLowerCase());
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href').toLowerCase();
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ein Blick hinter die Kulissen von Henrike Krabbenhöft - Leben jenseits von SEO, Content und KI">
+    <title>Die Krabben | Henrike Krabbenhöft</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .krabben-section {
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-md);
+            background: var(--color-background-light);
+            border-radius: var(--border-radius);
+        }
+
+        .krabben-section h2 {
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .gallery-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .gallery-slider figure {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            flex: 0 0 calc((100% - 2 * var(--spacing-md)) / 3);
+            min-width: calc((100% - 2 * var(--spacing-md)) / 3);
+        }
+
+        .gallery-slider figure:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-slider img {
+            scroll-snap-align: start;
+            border-radius: var(--border-radius);
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+
+        .image-caption {
+            font-size: 0.9em;
+            color: var(--color-text-light);
+            margin-top: var(--spacing-sm);
+            text-align: center;
+        }
+
+        .quote-box {
+            background: var(--color-primary-light);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            margin: var(--spacing-md) 0;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .two-column-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-md) 0;
+        }
+
+        .gallery-column img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .panorama-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin: var(--spacing-md) 0;
+        }
+
+        @media (max-width: 768px) {
+            .two-column-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about-headline {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .lead-text {
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pattern-strip {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            height: 150px;
+            background-color: #ffffff;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='10' viewBox='0 0 20 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 6H6v4H4V6H2V4h2V0h2v4h10V0h2v4h2v2h-2v4h-2V6z' fill='%23dfe8e2' fill-opacity='0.81' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 20px 10px;
+            border: none;
+            padding: 0;
+            z-index: 1;
+        }
+
+        /* Modal styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .modal-content img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+        }
+
+        .modal-caption {
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Animated Crab Styles */
+        .animated-crab {
+            position: relative;
+            bottom: 0;
+            left: -100px;
+            width: 60px;
+            height: auto;
+            z-index: 1000;
+            animation: walkAcross 20s linear infinite;
+            pointer-events: none;
+            margin-bottom: 20px;
+        }
+
+        @keyframes walkAcross {
+            0% {
+                transform: translateX(0) scaleX(1);
+                left: -100px;
+            }
+            49% {
+                transform: translateX(0) scaleX(1);
+            }
+            50% {
+                transform: translateX(0) scaleX(-1);
+            }
+            100% {
+                transform: translateX(0) scaleX(-1);
+                left: calc(100vw + 100px);
+            }
+        }
+
+        /* Add a slight bounce to the walking animation */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .animated-crab {
+            animation: walkAcross 20s linear infinite, bounce 0.5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header mit Navigation -->
+    <header class="site-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="img/logo.png" alt="Die Krabben" class="logo-image">
+                </a>
+                
+                <button class="hamburger" aria-label="Menü öffnen">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="über-mich.html">Über mich</a></li>
+                    <li><a href="kompetenzen-tools.html">Kompetenzen & Tools</a></li>
+                    <li><a href="ki-in-aktion.html">KI in Aktion</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main>
+        <div class="container" style="margin: 0 auto; max-width: 1000px;">
+            <h1 class="about-headline">Die Krabben. Immer aktiv.</h1>
+            <p class="lead-text">
+                Ich liebe meinen Job – aber er ist nicht alles. Kreativität braucht Ausgleich,<br> neue Eindrücke und manchmal einfach frische Luft.
+                Hier ein kleiner Blick hinter die Kulissen<br> unseres Lebens jenseits von SEO, Content und KI.
+            </p>
+
+            <!-- Abschnitt 1: Gemeinsam unterwegs -->
+            <section class="krabben-section">
+                <h2>Reisen, Bewegung, Perspektivwechsel</h2>
+                <p>
+                    Mein Mann und ich sind gerne unterwegs – zu Fuß, mit dem Rad oder auf Reisen in die Ferne. Ob Städtetrips oder kleine Entdeckungen in der Nähe: Unterwegssein tut uns gut, bringt neue Eindrücke und manchmal auch neue Ideen. Unser Lieblingsort bleibt aber der Ammersee, direkt vor unserer Haustür und immer wieder schön.
+                </p>
+                <div class="gallery-slider">
+                    <figure data-modal="true">
+                        <img src="img/ammersee1.jpg" alt="Ammersee bei Sonnenuntergang" loading="lazy">
+                        <figcaption class="image-caption">Ammersee bei Sonnenuntergang</figcaption>
+                    </figure>
+                    <figure data-modal="true">
+                        <img src="img/ammersee2.jpg" alt="Wunderbarer Platz" loading="lazy">
+                        <figcaption class="image-caption">Wunderbarer Platz</figcaption>
+                    </figure>
+                    <figure data-modal="true">
+                        <img src="img/ammersee3.jpg" alt="Interessanter Himmel" loading="lazy">
+                        <figcaption class="image-caption">Interessanter Himmel</figcaption>
+                    </figure>
+                </div>
+            </section>
+            <!-- Abschnitt 2: Meine Kreativräume -->
+            <section class="krabben-section">
+                <h2>Mit Kamera & Farbe</h2>
+                <p>
+                    Kreativ zu sein gehört für mich einfach dazu, ob mit der Kamera, beim Malen oder Gestalten. Fotografieren schärft meinen Blick für Details, Farben bringen oft neue Ideen. Und manchmal hilft gerade das Analoge, um digital klarer zu denken.
+                </p><div class="gallery-slider">
+                    <figure data-modal="true">
+                        <img src="img/kamera1.jpg" alt="Löwenzahn mal anders" loading="lazy">
+                        <figcaption class="image-caption">Löwenzahn mal anders</figcaption>
+                    </figure>
+                    <figure data-modal="true">
+                        <img src="img/kamera2.jpg" alt="Zuckerahorn" loading="lazy">
+                        <figcaption class="image-caption">Zuckerahorn</figcaption>
+                    </figure>
+                    <figure data-modal="true">
+                        <img src="img/malen0.jpg" alt="Forggensee" loading="lazy">
+                        <figcaption class="image-caption">Forggensee</figcaption>
+                    </figure>
+                    <figure data-modal="true">
+                        <img src="img/malen1.jpg" alt="Fischerhütte am Ammersee" loading="lazy">
+                        <figcaption class="image-caption">Fischerhütte am Ammersee</figcaption>
+                                            </figure>
+                                            <figure data-modal="true">
+                                                <img src="img/kranz.jpg" alt="Selbstgesammelt und gebunden" loading="lazy">
+                                                <figcaption class="image-caption">Selbstgesammelt und gebunden</figcaption>
+                                                                    </figure>
+                </div>
+            </section>
+            <!-- Abschnitt 3: Garten, Traktor und Familiengeschichte -->
+            <section class="krabben-section">
+               
+                <h2>Garten, Traktor und Familiengeschichte</h2>
+                <p>
+                    Der Garten ist unser gemeinsamer Rückzugsort, ein Ort zum Anpacken, Durchatmen und Nachdenken. 
+                    Zwischen Hochbeet, blühenden Ecken und dem Gartenteich gestalten wir ihn Stück für Stück zusammen.<br><br> Besonders Roland findet hier seinen Ausgleich: beim Fahren mit dem Traktor von 1954, bei der Ahnenforschung oder wenn er mit Geduld und Hingabe unseren mittlerweile 39 Goldfischen (weitere unterwegs!) beim Schwimmen zuschaut.
+
+<br><br>
+                <div class="gallery-slider">
+                   
+                    <figure data-modal="true">
+                        <img src="img/traktor.jpg" alt="Der Traktor" loading="lazy">
+                        <figcaption class="image-caption">Der Traktor</figcaption>
+                    </figure>
+                    <figure data-modal="true">
+                        <img src="img/vorfahren.jpg" alt="2 Generationen zurück" loading="lazy">
+                        <figcaption class="image-caption">Zwei Generationen zurück</figcaption>
+                    </figure> <figure data-modal="true">
+                        <img src="img/fisch.jpg" alt="Unsere Goldfische" loading="lazy">
+                        <figcaption class="image-caption">Unsere Goldfische</figcaption>
+                    </figure>
+                </div>
+            </section>Unsere beiden erwachsenen Kinder gehen längst ihre eigenen Wege und das ist gut so. Zu Hause bleibt es trotzdem lebendig. 
+            <span style="color: #FF5E5B;">Die Krabben sind eben immer in Bewegung, jeder auf seine Weise.</span></p> <img src="img/krabbe.png" alt="Animierte Krabbe" class="animated-crab">
+        <br><br></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/henrikekrabbenhoeft/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                        <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                    </a>
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                    <a href="krabben.html">Die Krabben persönlich</a>
+                </div>
+                <p class="copyright">&copy; <span id="current-year"></span> Henrike Krabbenhöft. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add modal HTML right after the body tag opens -->
+    <div id="imageModal" class="modal-overlay">
+        <span class="modal-close">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+            <div id="modalCaption" class="modal-caption"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // Set active navigation link based on current page
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = decodeURIComponent(window.location.pathname.split('/').pop().toLowerCase());
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href').toLowerCase();
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Add modal functionality
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            const closeBtn = modal.querySelector('.modal-close');
+
+            // Open modal on image click
+            document.querySelectorAll('.gallery-slider figure[data-modal]').forEach(figure => {
+                figure.addEventListener('click', () => {
+                    const img = figure.querySelector('img');
+                    const caption = figure.querySelector('figcaption');
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                    modalCaption.textContent = caption.textContent;
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                });
+            });
+
+            // Close modal functions
+            const closeModal = () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = ''; // Re-enable scrolling
+            };
+
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeModal();
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Close on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
