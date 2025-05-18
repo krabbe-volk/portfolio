@@ -1820,4 +1820,61 @@ body:not(.home) .container > h1 {
         align-items: center;
         gap: 1.2rem;
     }
+}
+
+/* Mobile-first responsive grid adjustments */
+@media (max-width: 768px) {
+    .overview-grid,
+    .projects-grid,
+    .expectations-grid,
+    .process-grid,
+    .looking-for-grid,
+    .counter-grid,
+    .skills-grid,
+    .contact-grid,
+    .krabben-grid {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md);
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+    }
+
+    .hero-image {
+        max-width: 300px;
+        margin: 0 auto var(--spacing-lg) auto;
+    }
+
+    .hero-content {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .about-grid,
+    .skill-items {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Ensure images in cards and sections are responsive */
+    .project-image img,
+    .hero-image img,
+    .profile-image,
+    .expectation-card img,
+    .process-card img,
+    .looking-for-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Adjust card padding for better mobile display */
+    .project-card,
+    .expectation-card,
+    .process-card,
+    .looking-for-card,
+    .overview-card {
+        padding: var(--spacing-md);
+    }
 } 

@@ -104,8 +104,22 @@
         }
 
         @media (max-width: 768px) {
-            .two-column-gallery {
-                grid-template-columns: 1fr;
+            .gallery-slider {
+                flex-direction: column;
+                overflow-x: visible;
+                gap: var(--spacing-lg);
+            }
+
+            .gallery-slider figure {
+                flex: 0 0 100%;
+                min-width: 100%;
+                margin-bottom: var(--spacing-md);
+            }
+
+            .gallery-slider img {
+                width: 100%;
+                height: auto;
+                aspect-ratio: auto;
             }
         }
 
