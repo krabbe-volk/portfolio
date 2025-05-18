@@ -344,64 +344,36 @@ p {
     text-align: center;
 }
 
-.footer-links {
+.footer-row {
     display: flex;
     justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 0.5rem;
     flex-wrap: wrap;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-    position: relative;
 }
-
-.linkedin-link {
-    position: static;
-    display: flex;
+.footer-row-icons {
     align-items: center;
-    transition: transform var(--transition-normal);
-    background-color: var(--color-electric-coral);
-    padding: 0.5rem;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    justify-content: center;
+    gap: 1.2rem;
+    margin-bottom: 1.6rem;
+}
+.footer-row-legal {
+    gap: 2.5rem;
 }
 
-.linkedin-link:hover {
-    transform: scale(1.05);
-}
-
-.linkedin-icon {
-    width: 30px;
-    height: 30px;
-    color: var(--color-midnight-blue);
-}
-
-/* Krabben Link mit Pfeil */
-.footer-links a[href="krabben.html"] {
-    color: var(--color-muted-green);
-    position: relative;
-    padding-left: 1.5rem;
-}
-
-.footer-links a[href="krabben.html"]::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--color-electric-coral);
-}
-
-.footer-links a[href="krabben.html"]:hover {
-    color: var(--color-electric-coral);
-}
-
-.footer-links a {
+.footer-row a {
     color: var(--color-almost-white);
     text-decoration: none;
+    font-size: 1rem;
     transition: color var(--transition-fast);
 }
-
-.footer-links a:hover {
+.footer-row a:hover {
     color: var(--color-electric-coral);
+}
+
+p.copyright {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    color: var(--color-almost-white);
 }
 
 /* Animations */
@@ -488,24 +460,25 @@ p {
         height: 50px;
     }
 
-    .footer-links {
-        justify-content: center;
-        padding: 0 var(--spacing-md);
+    .footer-row {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .linkedin-link {
-        position: static;
-        margin-right: 0;
+    .footer-row-icons {
+        margin-bottom: 0.5rem;
     }
 
-    .linkedin-link {
-        width: 25px;
-        height: 25px;
+    .footer-row-legal {
+        margin-bottom: 0.5rem;
     }
 
-    .linkedin-icon {
-        width: 25px;
-        height: 25px;
+    .footer-row a {
+        font-size: 1rem;
+    }
+
+    .footer-row a:hover {
+        color: var(--color-electric-coral);
     }
 
     .nav-links {
@@ -1784,5 +1757,52 @@ body:not(.home) .container > h1 {
     
     .counter-item h3 {
         font-size: 1rem;
+    }
+}
+
+.linkedin-link, .xing-link {
+    background: none;
+    border-radius: 0;
+    width: auto;
+    height: auto;
+    margin: 0 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    padding: 0;
+}
+
+.linkedin-icon, .xing-icon {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
+.footer-row-icons a[href="krabben.html"] {
+    color: #A0BDA9;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+    margin-left: 0.7rem;
+    text-decoration: none;
+}
+.footer-row-icons a[href="krabben.html"]:hover {
+    color: #FF5E5B;
+}
+.footer-row-icons a[href="krabben.html"] span.krabben-arrow {
+    color: #FF5E5B;
+    font-size: 1.2em;
+    margin-right: 0.3em;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: 0.04em;
+}
+@media (max-width: 767px) {
+    .linkedin-icon, .xing-icon {
+        width: 20px;
+        height: 20px;
     }
 } 
