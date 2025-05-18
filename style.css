@@ -1805,4 +1805,19 @@ body:not(.home) .container > h1 {
         width: 20px;
         height: 20px;
     }
+}
+
+@media (max-width: 600px) {
+    .footer-row-icons {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    .footer-row-legal {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1.2rem;
+    }
 } 
