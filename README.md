@@ -68,8 +68,8 @@ Die Website wurde für optimale Performance entwickelt:
 ## Kontakt
 
 Bei Fragen oder Anregungen:
-- E-Mail: kontakt@henrikekrabbe.de
-- LinkedIn: [Henrike Krabbe](https://linkedin.com/)
+- E-Mail: info@die-krabben.de
+- LinkedIn: [Henrike Krabbenhöft](https://www.linkedin.com/in/henrikekrabbenhoeft/)
 
 ## Lizenz
 
