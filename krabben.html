@@ -276,7 +276,7 @@
             <h1 class="about-headline">Die Krabben. Immer aktiv.</h1>
             <p class="lead-text">
                 Ich liebe meinen Job – aber er ist nicht alles. Kreativität braucht Ausgleich,<br> neue Eindrücke und manchmal einfach frische Luft.
-                Hier ein kleiner Blick hinter die Kulissen<br> unseres Lebens jenseits von SEO, Content und KI.
+                Hier ein kleiner Blick hinter<br> die Kulissen unseres Lebens jenseits von SEO, Content und KI.
             </p>
 
             <!-- Abschnitt 1: Gemeinsam unterwegs -->
@@ -414,6 +414,9 @@
             // Open modal on image click
             document.querySelectorAll('.gallery-slider figure[data-modal]').forEach(figure => {
                 figure.addEventListener('click', () => {
+                    // Nur auf größeren Bildschirmen Modal öffnen
+                    if (window.innerWidth <= 768) return; // Auf Mobil NICHT öffnen
+
                     const img = figure.querySelector('img');
                     const caption = figure.querySelector('figcaption');
                     modalImg.src = img.src;

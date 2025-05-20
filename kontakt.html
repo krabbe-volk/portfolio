@@ -63,35 +63,137 @@
             <div class="container">
                 <h2>Was ich suche</h2>
                 <p>Ein Arbeitsumfeld, in dem ich meine Stärken entfalten und gemeinsam mit einem engagierten Team etwas bewegen kann.</p>
-                <div class="looking-for-buttons" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2rem;">
-                    <button class="looking-for-btn" data-desc="Ich möchte 3–4 Jahre aktiv mitgestalten. Langfristig, motiviert und auf Augenhöhe.">Perspektive</button>
-                    <button class="looking-for-btn" data-desc="Marketing und KI sinnvoll kombinieren. Weiter lernen. Neues ausprobieren.">Innovation</button>
-                    <button class="looking-for-btn" data-desc="Ein Produkt oder Thema, hinter dem ich stehen kann. Echt und glaubwürdig.">Identifikation</button>
-                    <button class="looking-for-btn" data-desc="Ein gutes Miteinander. Offen, unkompliziert, gemeinsam denkend.">Teamspirit</button>
-                </div>
-                <div id="looking-for-desc" class="looking-for-desc" style="background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(160,189,169,0.10); padding: 2rem; max-width: 600px; margin: 0 auto; text-align: center; font-size: 1rem;">
-                    Fahre mit der Maus über einen Begriff, um mehr zu erfahren.
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            Perspektive
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Ich möchte 3–4 Jahre aktiv mitgestalten. Langfristig, motiviert und auf Augenhöhe.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            Innovation
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Marketing und KI sinnvoll kombinieren. Weiter lernen. Neues ausprobieren.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            Identifikation
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Ein Produkt oder Thema, hinter dem ich stehen kann. Echt und glaubwürdig.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            Teamspirit
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Ein gutes Miteinander. Offen, unkompliziert, gemeinsam denkend.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <style>
+            .accordion {
+                max-width: 600px;
+                margin: 2rem auto;
+            }
+
+            .accordion-item {
+                margin-bottom: 1rem;
+                border-radius: 12px;
+                overflow: hidden;
+                background: #fff;
+                box-shadow: 0 2px 8px rgba(160,189,169,0.10);
+            }
+
+            .accordion-header {
+                width: 100%;
+                padding: 1.25rem;
+                background: #FF5E5B;
+                border: none;
+                text-align: left;
+                font-size: 1rem;
+                font-weight: 400;
+                font-family: var(--font-body);
+                line-height: 1.6;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                transition: background-color 0.3s ease;
+                color: white;
+            }
+
+            .accordion-header:hover {
+                background-color: #ff4a47;
+            }
+
+            .accordion-icon {
+                font-size: 1.5rem;
+                transition: transform 0.3s ease;
+                color: white;
+            }
+
+            .accordion-item.active .accordion-icon {
+                transform: rotate(45deg);
+            }
+
+            .accordion-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out, padding 0.3s ease;
+                background: #fff;
+            }
+
+            .accordion-item.active .accordion-content {
+                max-height: 200px;
+                padding: 0 1.25rem 1.25rem;
+            }
+
+            .accordion-content p {
+                margin: 0;
+                color: #1F2235;
+                font-size: 1rem;
+                font-weight: 400;
+                font-family: var(--font-body);
+                line-height: 1.6;
+            }
+        </style>
+
         <script>
-        // Interaktivität für die kompakte "Was ich suche"-Section
+        // Accordion functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.looking-for-btn');
-            const desc = document.getElementById('looking-for-desc');
-            const defaultText = 'Fahre mit der Maus über einen Begriff, um mehr zu erfahren.';
-            buttons.forEach(btn => {
-                btn.addEventListener('mouseenter', () => {
-                    desc.textContent = btn.getAttribute('data-desc');
-                });
-                btn.addEventListener('mouseleave', () => {
-                    desc.textContent = defaultText;
-                });
-                btn.addEventListener('focus', () => {
-                    desc.textContent = btn.getAttribute('data-desc');
-                });
-                btn.addEventListener('blur', () => {
-                    desc.textContent = defaultText;
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                
+                header.addEventListener('click', () => {
+                    // Close all other items
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
                 });
             });
         });
@@ -193,7 +295,10 @@
         </section>
     </main>
     <div class="container" style="margin: 40px auto;">
-        <img src="img/wave.jpg" alt="Lampe" style="width: 100%; display: block; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+        <picture>
+            <source media="(max-width: 768px)" srcset="img/wave-mobil.jpg">
+            <img src="img/wave.jpg" alt="Lampe" style="width: 100%; display: block; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+        </picture>
     </div>
     <!-- Footer -->
     <footer class="site-footer">
