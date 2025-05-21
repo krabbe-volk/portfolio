@@ -131,14 +131,20 @@
             </div>
         </section>
 
-        
-
         <div class="container" style="margin: 40px auto;">
             <picture>
                 <source media="(max-width: 768px)" srcset="img/tic-mobil.jpg">
                 <img src="img/tic.jpg" alt="Schreibtisch" style="width: 100%; display: block; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
             </picture>
         </div>
+
+        <style>
+        @media (min-width: 769px) {
+            .container[style*="margin: 40px auto;"]:has(img[src="img/tic.jpg"]) {
+                margin-top: var(--spacing-xl) !important;
+            }
+        }
+        </style>
 
         <!-- AI Competencies Section - Improved Circular Infographic -->
         <section class="ai-competencies-section" style="padding: var(--spacing-xl) 0; background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); overflow: hidden;">
