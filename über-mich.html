@@ -58,13 +58,14 @@
         </div>
 
         <!-- Video Section -->
-        <div class="container" style="margin: 40px auto;">
+        <div class="container" style="margin: 40px auto; max-width: 600px;">
             <video 
                 controls 
                 style="width: 100%; display: block; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.08);"
-                poster="img/video-poster.jpg"
+                poster="img/avatar.jpg"
+                onloadedmetadata="console.log('Video dimensions:', this.videoWidth + 'x' + this.videoHeight)"
             >
-                <source src="linkedin2.mp4" type="video/mp4">
+                <source src="img/Henrike.mp4" type="video/mp4">
                 Ihr Browser unterstützt keine Video-Wiedergabe.
             </video>
         </div>
