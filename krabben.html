@@ -121,6 +121,12 @@
                 height: auto;
                 aspect-ratio: auto;
             }
+
+            /* Only reduce spacing between krabben-sections, not the first one */
+            .krabben-section + .krabben-section {
+                margin-top: var(--spacing-xs);
+                padding: var(--spacing-sm);
+            }
         }
 
         .about-headline {
@@ -282,7 +288,7 @@
             <h1 class="about-headline">Die Krabben. Immer aktiv.</h1>
             <p class="lead-text">
                 Ich liebe meinen Job – aber er ist nicht alles. Kreativität braucht Ausgleich,<br> neue Eindrücke und manchmal einfach frische Luft.
-                Hier ein kleiner Blick hinter<br> die Kulissen unseres Lebens jenseits von SEO, Content und KI.
+                Hier ein kleiner Blick hinter<br> die Kulissen unseres Lebens jenseits von SEO, Content und KI.<br><br>
             </p>
 
             <!-- Abschnitt 1: Gemeinsam unterwegs -->

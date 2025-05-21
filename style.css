@@ -318,7 +318,7 @@ p {
 
 /* Overview Section */
 .overview {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-xl) 0 var(--spacing-md) 0;
 }
 
 .overview-grid {
