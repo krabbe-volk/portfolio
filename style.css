@@ -1542,8 +1542,7 @@ body:not(.home) .container > h1 {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .process-grid {
-        grid-template-columns: 1fr;
-        padding: 0 var(--spacing-md);
+        padding: 0;
     }
     
     .section-title {
@@ -1551,7 +1550,11 @@ body:not(.home) .container > h1 {
     }
     
     .process-card {
-        padding: var(--spacing-md);
+        width: 100%;
+        max-width: 390px;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
     }
 }
 
