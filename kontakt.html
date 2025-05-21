@@ -114,6 +114,87 @@
                 margin: 2rem auto;
             }
 
+            /* Add responsive styles for contact content */
+            .contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .contact-form-container,
+            .contact-info {
+                width: 100%;
+            }
+
+            .info-card {
+                background: #fff;
+                padding: 1.5rem;
+                border-radius: 12px;
+                margin-bottom: 1.5rem;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            }
+
+            /* Mobile styles */
+            @media screen and (max-width: 768px) {
+                .contact-grid {
+                    grid-template-columns: 1fr;
+                    gap: 1.5rem;
+                }
+
+                .contact-form-container {
+                    max-width: 100%;
+                    padding: 1.5rem 0.5rem;
+                }
+                .contact-info {
+                    max-width: 100%;
+                    padding: 0 1rem;
+                }
+
+                .info-card {
+                    max-width: 100%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .contact-form {
+                    width: 100%;
+                }
+
+                .form-group {
+                    width: 100%;
+                }
+
+                .form-group input,
+                .form-group textarea {
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+
+                /* Checkbox und Text untereinander */
+                .checkbox-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 0.5rem;
+                }
+                .checkbox-text {
+                    font-size: 0.97rem;
+                    line-height: 1.4;
+                }
+            }
+
+            /* Additional mobile optimization for very small screens */
+            @media screen and (max-width: 375px) {
+                .contact-form-container,
+                .contact-info {
+                    padding: 0 0.75rem;
+                }
+
+                .info-card {
+                    padding: 1.25rem;
+                }
+            }
+
             .accordion-item {
                 margin-bottom: 1rem;
                 border-radius: 12px;
